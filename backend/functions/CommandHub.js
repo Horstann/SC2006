@@ -6,9 +6,10 @@ class CommandHub {
 	DecodeCommand(cmdName) {
 		let cmd;
 		switch (cmdName) {
+			case "testAuth": 	cmd = new TestAuth(); break;
 			case "helloWorld":	cmd = new HelloWorld(); break;
 			case "viewProduct":	cmd = new ViewProduct(); break;
-			default:		cmd = new InvalidCommand(); break;
+			default:			cmd = new InvalidCommand(); break;
 		}
 		return cmd;
 	}
