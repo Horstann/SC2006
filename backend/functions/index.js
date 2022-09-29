@@ -1,12 +1,15 @@
 const CommandHub = require("./CommandHub.js");
 const functions = require("firebase-functions");
+const { initializeApp } = require('firebase-admin/app');
 
 // Create and Deploy Your First Cloud Functions
 // https://firebase.google.com/docs/functions/write-firebase-functions
 
-exports.cmd = functions.region("asia-southeast1").https.onRequest((req, res) => {
+exports.cmd = functions.region("asia-southeast1").https.onRequest(async (req, res) => {
 	//functions.logger.info("Hello logs!", {structuredData: true});
 	//response.send("Hello from Firebase!");
+
+	initializeApp();
 	
 	let cmdData;
 	try {
@@ -24,5 +27,5 @@ exports.cmd = functions.region("asia-southeast1").https.onRequest((req, res) => 
 	let commandHub = new CommandHub();
 	let cmd = commandHub.DecodeCommand(cmdData.cmd);
 
-	cmd.ExecuteCommand(cmdData, res);
+	await cmd.ExecuteCommand(cmdData, res);
 });
