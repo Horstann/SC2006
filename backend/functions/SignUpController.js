@@ -19,6 +19,7 @@ class SignUpController {
 		}
 
 		// TODO: Check if location is in Singapore.
+		// https://gis.stackexchange.com/questions/115301/how-to-find-a-location-is-inside-a-country
 		
 		// Create account.
 		let db = firestore.getFirestore();

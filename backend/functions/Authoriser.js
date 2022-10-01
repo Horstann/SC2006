@@ -25,7 +25,7 @@ class Authoriser {
 		if (accs.empty) {
 			return null;
 		}
-		return accs[0].data();
+		return accs[0];
 	}
 
 	async CheckAuth(cmdData, res) {
