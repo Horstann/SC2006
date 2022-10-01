@@ -5,6 +5,29 @@ const CommandHub = require("./CommandHub.js");
 const CLIENT_ID = "TODO";
 
 class Authoriser {
+	async GetUidFromAuthKey(authKey) {
+		let client = new auth.OAuth2Client(CLIENT_ID);
+		try {
+			let ticket = await client.verifyIdToken({
+				"idToken": authKey,
+				"audience": CLIENT_ID
+			});
+			return ticket.getUserId();
+		}
+		catch {
+			return null;
+		}
+	}
+
+	async GetAccFromUid(uid) {
+		let db = firestore.getFirestore();
+		let accs = await db.collection("User").where("UID", "==", uid).get();
+		if (accs.empty) {
+			return null;
+		}
+		return accs[0].data();
+	}
+
 	async CheckAuth(cmdData, res) {
 		if (cmdData.authKey == undefined || cmdData.authKey == "") {
 			await new CommandHub().DecodeCommand(cmdData, null, res);
@@ -12,31 +35,20 @@ class Authoriser {
 		}
 
 		// Get uid from authKey
-		let uid = await GetUidFromAuthKey(cmdData.authKey);
+		let uid = await this.GetUidFromAuthKey(cmdData.authKey);
 		if (uid == null) {
 			res.json({"status": 1});
 			return;
 		}
 
 		// Get an account from our database using uid
-		let db = firestore.getFirestore();
-		let accs = await db.collection("User").where("UID", "==", uid).get();
-		if (accs.empty) {
+		let acc = await this.GetAccFromUid(uid);
+		if (acc == null) {
 			res.json({"status": 2});
 			return;
 		}
 
-		let acc = accs[0].data();
 		await new CommandHub().DecodeCommand(cmdData, acc, res);
-	}
-
-	async GetUidFromAuthKey(authKey) {
-		let client = new auth.OAuth2Client(CLIENT_ID);
-		let ticket = await client.verifyIdToken({
-			"idToken": authKey,
-			"audience": CLIENT_ID
-		});
-		return ticket.getUserId();
 	}
 }
 
