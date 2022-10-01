@@ -29,7 +29,12 @@ class Authoriser {
 	}
 
 	async CheckAuth(cmdData, res) {
-		if (cmdData.authKey == undefined || cmdData.authKey == "") {
+		if (cmdData.authKey == undefined) {
+			res.json({"status": 9});
+			return;
+		}
+
+		if (cmdData.authKey == "") {
 			await new CommandHub().DecodeCommand(cmdData, null, res);
 			return;
 		}

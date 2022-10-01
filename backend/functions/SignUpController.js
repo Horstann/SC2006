@@ -2,6 +2,13 @@ const firestore = require("firebase-admin/firestore");
 
 class SignUpController {
 	async ExecuteCommand(cmdData, acc, res) {
+		if (cmdData.newAuthKey == undefined ||
+				cmdData.homeLoc == undefined ||
+				cmdData.homeAddr == undefined) {
+			res.json({"status": 9});
+			return;
+		}
+
 		let authoriser = new Authoriser();
 
 		// Get uid

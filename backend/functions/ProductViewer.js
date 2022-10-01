@@ -2,6 +2,11 @@ const { getFirestore } = require('firebase-admin/firestore');
 
 class ProductViewer {
 	async ExecuteCommand(cmdData, acc, res) {
+		if (cmdData.productId == undefined) {
+			res.json({"status": 9});
+			return;
+		}
+
 		// connect to firestore
 		const db = getFirestore();
 		const productRef = db.collection("Product").doc(cmdData.productId);

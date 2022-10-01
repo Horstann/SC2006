@@ -1,7 +1,13 @@
 const firestore = require("firebase-admin/firestore");
 
 class AccountEditor {
-	ExecuteCommand(cmdData, acc, res) {
+	async ExecuteCommand(cmdData, acc, res) {
+		if (cmdData.homeLoc == undefined ||
+				cmdData.homeAddr == undefined) {
+			res.json({"status": 9});
+			return;
+		}
+
 		// TODO: Check if location is in Singapore.
 		// https://gis.stackexchange.com/questions/115301/how-to-find-a-location-is-inside-a-country
 
