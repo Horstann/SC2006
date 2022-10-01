@@ -1,17 +1,19 @@
 const HelloWorld = require("./HelloWorld.js");
-const ViewProduct = require("./ViewProduct.js");
+const SignUpController = require("./SignUpController.js");
+const ProductViewer = require("./ProductViewer.js");
 const InvalidCommand = require("./InvalidCommand.js");
 
 class CommandHub {
-	DecodeCommand(cmdName) {
+	async DecodeCommand(cmdData, acc, res) {
 		let cmd;
-		switch (cmdName) {
-			case "testAuth": 	cmd = new TestAuth(); break;
+		switch (cmdData.cmd) {
 			case "helloWorld":	cmd = new HelloWorld(); break;
-			case "viewProduct":	cmd = new ViewProduct(); break;
-			default:			cmd = new InvalidCommand(); break;
+			case "signUp":		cmd = new SignUpController(); break;
+			case "viewProduct":	cmd = new ProductViewer(); break;
+			default:		cmd = new InvalidCommand(); break;
 		}
-		return cmd;
+
+		await cmd.ExecuteCommand(cmdName, acc, res);
 	}
 }
 

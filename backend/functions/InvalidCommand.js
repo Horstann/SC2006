@@ -1,5 +1,5 @@
 class InvalidCommand {
-	ExecuteCommand(cmdData, res) {
+	ExecuteCommand(cmdData, acc, res) {
 		res.send({
 			"status": 5
 		});

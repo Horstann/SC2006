@@ -1,7 +1,7 @@
 const { getFirestore } = require('firebase-admin/firestore');
 
-class ViewProduct {
-	async ExecuteCommand(cmdData, res) {
+class ProductViewer {
+	async ExecuteCommand(cmdData, acc, res) {
 		// connect to firestore
 		const db = getFirestore();
 		const productRef = db.collection("Product").doc(cmdData.productId);
@@ -27,4 +27,4 @@ class ViewProduct {
 	}
 }
 
-module.exports = ViewProduct;
+module.exports = ProductViewer;
