@@ -3,6 +3,7 @@ const SignUpController = require("./SignUpController.js");
 const SignInController = require("./SignInController.js");
 const AccountEditor = require("./AccountEditor.js");
 const ProductViewer = require("./ProductViewer.js");
+const ProductAdder = require("./ProductAdder");
 const InvalidCommand = require("./InvalidCommand.js");
 
 class CommandHub {
@@ -14,6 +15,7 @@ class CommandHub {
 			case "signIn":		cmd = new SignInController(); break;
 			case "editAccount":	cmd = new AccountEditor(); break;
 			case "viewProduct":	cmd = new ProductViewer(); break;
+			case "addProduct":	cmd = new ProductAdder(); break;
 			default:		cmd = new InvalidCommand(); break;
 		}
 

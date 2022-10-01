@@ -10,7 +10,6 @@ class SignUpController {
 		}
 
 		let authoriser = new Authoriser();
-
 		// Get uid
 		let uid = await authoriser.GetUidFromAuthKey(cmdData.newAuthKey);
 		if (uid == null) {
