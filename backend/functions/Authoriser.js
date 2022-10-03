@@ -2,7 +2,7 @@ const auth = require("google-auth-library");
 const firestore = require('firebase-admin/firestore');
 const CommandHub = require("./CommandHub.js");
 
-const CLIENT_ID = "TODO";
+const CLIENT_ID = "143232307943-mnfh1u4sve8f166u8uvtntkntn5qa2uv.apps.googleusercontent.com";
 
 class Authoriser {
 	async GetUidFromAuthKey(authKey) {

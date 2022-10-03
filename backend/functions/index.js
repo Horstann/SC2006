@@ -23,5 +23,8 @@ exports.cmd = functions.region("asia-southeast1").https.onRequest(async (req, re
 		}
 	}
 
-	await new Authoriser().CheckAuth(cmdData, res);
+	functions.logger.log("New request: ", req.rawBody.toString());
+
+	global.authoriser = new Authoriser();
+	await global.authoriser.CheckAuth(cmdData, res);
 });

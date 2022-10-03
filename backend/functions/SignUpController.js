@@ -9,16 +9,15 @@ class SignUpController {
 			return;
 		}
 
-		let authoriser = new Authoriser();
 		// Get uid
-		let uid = await authoriser.GetUidFromAuthKey(cmdData.newAuthKey);
+		let uid = await global.authoriser.GetUidFromAuthKey(cmdData.newAuthKey);
 		if (uid == null) {
 			res.json({"status": 1});
 			return;
 		}
 
 		// Check if account already exists
-		let checkAcc = await authoriser.GetAccFromUid(uid);
+		let checkAcc = await global.authoriser.GetAccFromUid(uid);
 		if (checkAcc != null) {
 			res.json({"status": 8});
 			return;
