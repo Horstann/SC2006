@@ -3,16 +3,16 @@ const { getFirestore } = require('firebase-admin/firestore');
 class ProductAdder {
 	async ExecuteCommand(cmdData, acc, res) {
 		const data = {
-			name: cmdData.name,
-			totalUnits: cmdData.totalUnits,
-			totalBought: 0,
-			priceThresholds: cmdData.priceThresholds,
-			unitThresholds: cmdData.unitThresholds,
-			closingTime: cmdData.closingTime,
-			desc: cmdData.desc,
-			picUrl: cmdData.picUrl,
-			sellerLoc: acc.HomeLocation,
-			sellerAddr: acc.HomeAddress
+			Name: cmdData.name,
+			TotalUnits: cmdData.totalUnits,
+			TotalBought: 0,
+			PriceThresholds: cmdData.priceThresholds,
+			UnitThresholds: cmdData.unitThresholds,
+			ClosingTime: cmdData.closingTime,
+			Desc: cmdData.desc,
+			PicUrl: cmdData.picUrl,
+			SellerLoc: acc.HomeLocation,
+			SellerAddr: acc.HomeAddress
 		};
 
 		const db = getFirestore();

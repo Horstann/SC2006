@@ -16,8 +16,8 @@ class ProductSearcher {
 		let search_res = [];
 		snapshot.forEach(doc => {
 			if (doc.data().Name.trim().toLowerCase().includes(searchTerm)) {
-				let sellerLat = doc.data().sellerLocation.getLatitude();
-				let sellerLong = doc.data().sellerLocation.getLongtitude();
+				let sellerLat = doc.data().SellerLocation.getLatitude();
+				let sellerLong = doc.data().SellerLocation.getLongtitude();
 				let distanceInKm = geofire.distanceBetween([buyerLat, buyerLong], [sellerLat, sellerLong]);
 				search_res.push([doc.id, distanceInKm]);
 			}

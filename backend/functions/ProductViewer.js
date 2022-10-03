@@ -15,7 +15,7 @@ class ProductViewer {
 			"totalBought": doc.data().TotalBought,
 			"priceThresholds": doc.data().PriceThresholds,
 			"unitThresholds": doc.data().UnitThresholds,
-			"durationLeft": doc.data().DurationLeft,
+			"durationLeft": doc.data().ClosingTime,
 			"desc": doc.data().Description,
 			"picUrl": doc.data().Picture,
 			"sellerLoc": doc.data().SellerLocation,
