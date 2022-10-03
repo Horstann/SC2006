@@ -15,11 +15,12 @@ class ProductViewer {
 			"totalBought": doc.data().TotalBought,
 			"priceThresholds": doc.data().PriceThresholds,
 			"unitThresholds": doc.data().UnitThresholds,
-			"durationLeft": doc.data().ClosingTime,
+			"closingTime": doc.data().ClosingTime,
 			"desc": doc.data().Description,
-			"picUrl": doc.data().Picture,
-			"sellerLoc": doc.data().SellerLocation,
-			"sellerAddr": doc.data().SellerAddress
+			"pics": doc.data().Pictures,
+			"sellerAddr": doc.data().Seller.data().HomeAddress,
+			"sellerLat": doc.data().Seller.data().HomeLat,
+			"sellerLong": doc.data().Seller.data().HomeLong
 		});
 	}
 }
