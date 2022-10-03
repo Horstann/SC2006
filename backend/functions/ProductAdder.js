@@ -8,7 +8,7 @@ class ProductAdder {
 			totalBought: 0,
 			priceThresholds: cmdData.priceThresholds,
 			unitThresholds: cmdData.unitThresholds,
-			durationLeft: cmdData.durationLeft,
+			closingTime: cmdData.closingTime,
 			desc: cmdData.desc,
 			picUrl: cmdData.picUrl,
 			sellerLoc: acc.HomeLocation,
