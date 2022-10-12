@@ -6,6 +6,7 @@ const CLIENT_ID = "143232307943-mnfh1u4sve8f166u8uvtntkntn5qa2uv.apps.googleuser
 
 class Authoriser {
 	async GetUidFromAuthKey(authKey) {
+		/*
 		let client = new auth.OAuth2Client(CLIENT_ID);
 		try {
 			let ticket = await client.verifyIdToken({
@@ -52,7 +53,8 @@ class Authoriser {
 			res.json({"status": 2});
 			return;
 		}
-
+		*/
+		
 		await new CommandHub().DecodeCommand(cmdData, acc, res);
 	}
 }
