@@ -55,7 +55,8 @@ class Authoriser {
 		}
 		*/
 		
-		await new CommandHub().DecodeCommand(cmdData, acc, res);
+		//await new CommandHub().DecodeCommand(cmdData, acc, res);
+		await new CommandHub().DecodeCommand(cmdData, "", "");
 	}
 }
 

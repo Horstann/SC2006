@@ -43,7 +43,7 @@ class ProductSearcher {
 
 		res.json({
 			"status": 0,
-			"products": search_res
+			"products": search_res,
 		});
 	}
 }
