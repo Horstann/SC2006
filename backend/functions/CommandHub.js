@@ -16,9 +16,9 @@ class CommandHub {
 			case "signUp":		cmd = new SignUpController(); break;
 			case "signIn":		cmd = new SignInController(); break;
 			case "editAccount":	cmd = new AccountEditor(); break;
-			case "loadProduct": cmd = new ProductLoader(); break;
+			case "loadProducts": cmd = new ProductLoader(); break;
 			case "viewProduct": cmd = new ProductViewer(); break;
-			case "searchProduct":	cmd = new ProductSearcher(); break;
+			case "searchProducts":	cmd = new ProductSearcher(); break;
 			case "addProduct":	cmd = new ProductAdder(); break;
 			default: cmd = new InvalidCommand(); break;
 		}
