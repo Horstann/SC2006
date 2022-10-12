@@ -15,9 +15,10 @@ class CommandHub {
 			case "signUp":		cmd = new SignUpController(); break;
 			case "signIn":		cmd = new SignInController(); break;
 			case "editAccount":	cmd = new AccountEditor(); break;
-			case "searchProduct":	cmd = new ProductViewer(); break;
+			case "viewProduct": cmd = new ProductViewer(); break;
+			case "searchProduct":	cmd = new ProductSearcher(); break;
 			case "addProduct":	cmd = new ProductAdder(); break;
-			default:		cmd = new InvalidCommand(); break;
+			default: cmd = new InvalidCommand(); break;
 		}
 
 		await cmd.ExecuteCommand(cmdData, acc, res);
