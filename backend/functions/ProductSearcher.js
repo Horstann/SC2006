@@ -39,7 +39,7 @@ class ProductSearcher {
 		function funct(item, index, arr) {
 			arr[index] = item[0];
 		}
-		search_res.forEach(funct)
+		search_res.forEach(funct);
 
 		res.json({
 			"status": 0,
@@ -49,3 +49,16 @@ class ProductSearcher {
 }
 
 module.exports = ProductSearcher;
+/*
+{
+    "cmd": "addProduct",
+    "authKey": "",
+    "name": "A Cow",
+    "totalUnits": 10,
+    "priceThresholds": [100, 85, 75, 65, 50],
+    "unitThresholds": [0, 2, 4, 6, 10],
+    "desc": "Yep, a cow",
+    "closingTime": "0001-01-01T00:00:00Z",
+    "pics": ["https://img.fruugo.com/product/0/70/7700700_max.jpg", "https://upload.wikimedia.org/wikipedia/commons/0/0c/Cow_female_black_white.jpg"]
+}
+*/
