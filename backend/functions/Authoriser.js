@@ -5,8 +5,8 @@ const CommandHub = require("./CommandHub.js");
 const CLIENT_ID = "143232307943-mnfh1u4sve8f166u8uvtntkntn5qa2uv.apps.googleusercontent.com";
 
 class Authoriser {
+	/*
 	async GetUidFromAuthKey(authKey) {
-		/*
 		let client = new auth.OAuth2Client(CLIENT_ID);
 		try {
 			let ticket = await client.verifyIdToken({
@@ -27,9 +27,10 @@ class Authoriser {
 			return null;
 		}
 		return accs[0];
-	}
+	}*/
 
 	async CheckAuth(cmdData, res) {
+		/*
 		if (cmdData.authKey == undefined) {
 			res.json({"status": 9});
 			return;
@@ -52,11 +53,9 @@ class Authoriser {
 		if (acc == null) {
 			res.json({"status": 2});
 			return;
-		}
-		*/
+		}*/
 		
-		//await new CommandHub().DecodeCommand(cmdData, acc, res);
-		await new CommandHub().DecodeCommand(cmdData, "", "");
+		await new CommandHub().DecodeCommand(cmdData, acc, res);
 	}
 }
 
