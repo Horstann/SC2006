@@ -43,7 +43,8 @@ class ProductSearcher {
 
 		res.json({
 			"status": 0,
-			"products": search_res
+			"products": search_res,
+			"timestamp": search_res[0]["durationLeft"]
 		});
 	}
 }
