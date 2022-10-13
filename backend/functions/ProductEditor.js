@@ -4,10 +4,11 @@ class ProductEditor {
 	async ExecuteCommand(cmdData, acc, res) {
 		const db = getFirestore();
         const productRef = db.collection("Product").doc(cmdData.productId);
+        if (!productRef.exists) res.json({"status": 7});
         const doc = await productRef.get();
 		if (!doc.exists) res.json({"status": 7});
 
-        if (cmdData.name.exists) await productRef.update({Name: cmdData.name});
+        if (cmdData.name != null) await productRef.update({Name: cmdData.name});
         /*
         const result = await productRef.update({
             Name: cmdData.name,
