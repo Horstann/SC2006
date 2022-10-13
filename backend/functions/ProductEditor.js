@@ -7,6 +7,8 @@ class ProductEditor {
         const doc = await productRef.get();
 		if (!doc.exists) res.json({"status": 7});
 
+        if (cmdData.name) await productRef.update({Name: cmdData.name});
+        /*
         const result = await productRef.update({
             Name: cmdData.name,
 			TotalUnits: cmdData.totalUnits,
@@ -18,14 +20,15 @@ class ProductEditor {
 				"_seconds": 1669946400,
 				"_nanoseconds": 438000000
 			}
-			*/
+			
 			Desc: cmdData.desc,
 			Pictures: cmdData.pics
         });
+        */
 
 		res.json({
 			"status": 0,
-			"productId": result.id
+			"productId": cmdData.productId
 		});
 	}
 }
