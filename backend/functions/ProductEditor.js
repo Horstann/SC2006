@@ -7,7 +7,7 @@ class ProductEditor {
         const doc = await productRef.get();
 		if (!doc.exists) res.json({"status": 7});
 
-        if (cmdData.name) await productRef.update({Name: cmdData.name});
+        if (cmdData.name.exists) await productRef.update({Name: cmdData.name});
         /*
         const result = await productRef.update({
             Name: cmdData.name,
