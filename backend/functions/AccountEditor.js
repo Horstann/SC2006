@@ -2,7 +2,8 @@ const firestore = require("firebase-admin/firestore");
 
 class AccountEditor {
 	async ExecuteCommand(cmdData, acc, res) {
-		if (cmdData.homeLoc == undefined ||
+		if (cmdData.homeLat == undefined ||
+				cmdData.homeLong == undefined ||
 				cmdData.homeAddr == undefined) {
 			res.json({"status": 9});
 			return;
@@ -18,7 +19,8 @@ class AccountEditor {
 
 		await acc.set({
 			"HomeAddress": cmdData.homeAddr,
-			"HomeLocation": cmdData.homeLoc,
+			"HomeLocation": new firestore.GeoPoint(
+				cmdData.homeLat, cmdData.homeLong),
 			"UID": acc.data().uid
 		});
 		
