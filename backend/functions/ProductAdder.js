@@ -17,7 +17,7 @@ class ProductAdder {
 				"_nanoseconds": 438000000
 			}
 			*/
-			Desc: cmdData.desc,
+			Description: cmdData.desc,
 			Pictures: cmdData.pics,
 			Seller: acc
 		};
@@ -25,6 +25,7 @@ class ProductAdder {
 		const result = await db.collection('Product').add(data);
 		res.json({
 			"status": 0,
+			"pictures": result.data().Pictures,
 			"productId": result.id
 		});
 	}

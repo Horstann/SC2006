@@ -4,31 +4,20 @@ class ProductEditor {
 	async ExecuteCommand(cmdData, acc, res) {
 		const db = getFirestore();
         const productRef = db.collection("Product").doc(cmdData.productId);
-        if (!productRef.exists) res.json({"status": 7});
         const doc = await productRef.get();
 		if (!doc.exists) res.json({"status": 7});
 
         if (cmdData.name != null) await productRef.update({Name: cmdData.name});
-        /*
-        const result = await productRef.update({
-            Name: cmdData.name,
-			TotalUnits: cmdData.totalUnits,
-			PriceThresholds: cmdData.priceThresholds,
-			UnitThresholds: cmdData.unitThresholds,
-			ClosingTime: cmdData.closingTime,
-			/* timestamp must be in the format below
-			{
-				"_seconds": 1669946400,
-				"_nanoseconds": 438000000
-			}
-			
-			Desc: cmdData.desc,
-			Pictures: cmdData.pics
-        });
-        */
+        if (cmdData.totalUnits != null) await productRef.update({TotalUnits: cmdData.totalUnits});
+        if (cmdData.priceThresholds != null) await productRef.update({PriceThresholds: cmdData.priceThresholds});
+        if (cmdData.unitThresholds != null) await productRef.update({UnitThresholds: cmdData.unitThresholds});
+        if (cmdData.closingTime != null) await productRef.update({ClosingTime: cmdData.closingTime});
+        if (cmdData.desc != null) await productRef.update({Desc: cmdData.desc});
+        if (cmdData.pics != null) await productRef.update({Pictures: cmdData.pics});
 
 		res.json({
 			"status": 0,
+            "pictures": productRef.data().Pictures,
 			"productId": cmdData.productId
 		});
 	}
