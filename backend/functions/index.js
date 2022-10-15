@@ -1,6 +1,8 @@
 const functions = require("firebase-functions");
 const app = require('firebase-admin/app');
-app.initializeApp();
+app.initializeApp({
+	"storageBucket": "agora-369c3.appspot.com"
+});
 const Authoriser = require("./Authoriser.js");
 
 // Create and Deploy Your First Cloud Functions
