@@ -17,13 +17,19 @@ class AccountEditor {
 			return;
 		}
 
-		await acc.set({
-			"HomeAddress": cmdData.homeAddr,
-			"HomeLocation": new firestore.GeoPoint(
+		const result = await acc.set({
+			HomeAddress: cmdData.homeAddr,
+			HomeLocation: new firestore.GeoPoint(
 				cmdData.homeLat, cmdData.homeLong),
-			"UID": acc.data().uid
+			UID: acc.data().uid
 		});
 		
+		if (cmdData.qrcode != null){
+			await acc.set({
+				QRCode: cmdData.qrcode
+			}, { merge: true });
+		}
+
 		res.json({"status": 0});
 	}
 }

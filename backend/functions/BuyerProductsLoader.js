@@ -1,33 +1,18 @@
 const { getFirestore } = require('firebase-admin/firestore');
 const { admin } = require('firebase-admin');
 
-// As query is too complex, it's unable to be pagenated.
-// So function returns the full array of relevant products
-
-class ProductSearcher {
+class BuyerProductsLoader {
 	async ExecuteCommand(cmdData, acc, res) {
 		let buyerLat = acc.data().HomeLocation.latitude;
 		let buyerLong = acc.data().HomeLocation.longtitude;
-		let searchTerm = cmdData.searchTerm.trim().toLowerCase();
 
 		const db = getFirestore();
 		const productRefs = db.collection('Product');
 		const snapshot = await productRefs.get();
 
-		/*
-		const buyerId = acc.id;
-		const buyerRef = db.collection("User").doc(buyerId);
-		const buyerDoc = await buyerRef.get();
-
-		let buyerLat = buyerDoc.data().HomeLocation.latitude;
-		let buyerLong = buyerDoc.data().HomeLocation.longtitude;
-		let searchTerm = cmdData.searchTerm.trim().toLowerCase();
-		*/
-
-		let search_res = [];
+		let products = [];
 		snapshot.forEach(async doc => {
-			if (doc.data().Name.trim().toLowerCase().includes(searchTerm) && doc.data().ClosingTime > admin.firestore.Timestamp.now()) {
-				
+			if (doc.id in acc.BoughtProducts) {
 				const sellerId = doc.data().Seller.id;
 				const sellerRef = db.collection("User").doc(sellerId);
 				const sellerDoc = await sellerRef.get();
@@ -60,10 +45,9 @@ class ProductSearcher {
 
 		res.json({
 			"status": 0,
-			"products": search_res,
-			"acc": acc
+			"products": products
 		});
 	}
 }
 
-module.exports = ProductSearcher;
+module.exports = BuyerProductsLoader;

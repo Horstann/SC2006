@@ -9,6 +9,11 @@ const ProductSearcher = require("./ProductSearcher");
 const ProductEditor = require("./ProductEditor.js");
 const InvalidCommand = require("./InvalidCommand.js");
 const ImageUploaderTester = require("./ImageUploaderTester.js");
+const QRCodeLoader = require("./QRCodeLoader.js");
+const BuyerProductsLoader = require("./BuyerProductsLoader");
+const SellerProductsLoader = require("./SellerProductsLoader");
+const ProductBuyer = require("./ProductBuyer");
+const ProductDropper = require("./ProductDropper");
 
 class CommandHub {
 	async DecodeCommand(cmdData, acc, res) {
@@ -24,6 +29,11 @@ class CommandHub {
 			case "searchProducts":	cmd = new ProductSearcher(); break;
 			case "editProduct": 	cmd = new ProductEditor(); break;
 			case "testImageUpload": cmd = new ImageUploaderTester(); break;
+			case "loadQRCode":		cmd = new QRCodeLoader(); break;
+			case "loadBuyerProducts": cmd = new BuyerProductsLoader(); break;
+			case "loadSellerProducts": cmd = new SellerProductsLoader(); break;
+			case "buyProduct":		cmd = new ProductBuyer(); break;
+			case "dropProduct":		cmd = new ProductDropper(); break;
 			default:		cmd = new InvalidCommand(); break;
 		}
 
