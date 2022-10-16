@@ -3,6 +3,12 @@ const { getFirestore } = require('firebase-admin/firestore');
 class ProductAdder {
 	async ExecuteCommand(cmdData, acc, res) {
 		const db = getFirestore();
+		
+		const [dateValues, timeValues] = (cmdData.closingTime+":00").split(' ');
+		const [month, day, year] = dateValues.split('/');
+		const [hours, minutes, seconds] = timeValues.split(':');
+		const date = new Date(+year, month - 1, +day, +hours, +minutes, +seconds);
+		const timestamp = date.fromDate();
 
 		const data = {
 			Name: cmdData.name,
@@ -10,7 +16,7 @@ class ProductAdder {
 			TotalBought: 0,
 			PriceThresholds: cmdData.priceThresholds,
 			UnitThresholds: cmdData.unitThresholds,
-			ClosingTime: cmdData.closingTime,
+			ClosingTime: timestamp,
 			/* timestamp must be in the format below
 			{
 				"_seconds": 1669946400,

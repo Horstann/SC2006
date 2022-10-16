@@ -11,7 +11,15 @@ class ProductEditor {
         if (cmdData.totalUnits != null) await productRef.update({TotalUnits: cmdData.totalUnits});
         if (cmdData.priceThresholds != null) await productRef.update({PriceThresholds: cmdData.priceThresholds});
         if (cmdData.unitThresholds != null) await productRef.update({UnitThresholds: cmdData.unitThresholds});
-        if (cmdData.closingTime != null) await productRef.update({ClosingTime: cmdData.closingTime});
+        if (cmdData.closingTime != null){
+            const [dateValues, timeValues] = (cmdData.closingTime+":00").split(' ');
+            const [month, day, year] = dateValues.split('/');
+            const [hours, minutes, seconds] = timeValues.split(':');
+            const date = new Date(+year, month - 1, +day, +hours, +minutes, +seconds);
+            const timestamp = date.fromDate();
+
+            await productRef.update({ClosingTime: timestamp});
+        }
         if (cmdData.desc != null) await productRef.update({Desc: cmdData.desc});
         if (cmdData.pics != null) await productRef.update({Pictures: cmdData.pics});
 

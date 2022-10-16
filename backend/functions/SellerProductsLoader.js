@@ -1,5 +1,4 @@
 const { getFirestore } = require('firebase-admin/firestore');
-const { admin } = require('firebase-admin');
 
 class SellerProductsLoader {
 	async ExecuteCommand(cmdData, acc, res) {
@@ -13,6 +12,12 @@ class SellerProductsLoader {
             const sellerId = doc.data().Seller.id;
 
             if (sellerId = acc.id){
+				let timestamp = doc.data().ClosingTime;
+				let date = timestamp.toDate();
+				let date1 = [date.getDate().toString().padStart(2,'0'),(date.getMonth() + 1).toString().padStart(2,'0'),date.getFullYear(),].join('/')
+				let date2 = date.getHours().toString().padStart(2,'0') + ":" + date.getMinutes().toString().padStart(2,'0')
+				let dateString = date1 + " " + date2;
+
                 products.push({
                     "productId": doc.id,
                     "name": doc.data().Name,
@@ -20,7 +25,7 @@ class SellerProductsLoader {
                     "totalBought": doc.data().TotalBought,
                     "priceThresholds": doc.data().PriceThresholds,
                     "unitThresholds": doc.data().UnitThresholds,
-                    "durationLeft": doc.data().ClosingTime,
+                    "closingTime": dateString,
                     "desc": doc.data().Description,
                     "pics": doc.data().Pictures,
                 });

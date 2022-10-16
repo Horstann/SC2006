@@ -1,5 +1,4 @@
 const { getFirestore } = require('firebase-admin/firestore');
-const { admin } = require('firebase-admin');
 
 class QRCodeLoader {
 	async ExecuteCommand(cmdData, acc, res) {

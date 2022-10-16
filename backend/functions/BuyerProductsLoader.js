@@ -1,5 +1,4 @@
 const { getFirestore } = require('firebase-admin/firestore');
-const { admin } = require('firebase-admin');
 
 class BuyerProductsLoader {
 	async ExecuteCommand(cmdData, acc, res) {
@@ -18,8 +17,14 @@ class BuyerProductsLoader {
 				const sellerDoc = await sellerRef.get();
 				let sellerLat = sellerDoc.data().HomeLocation.latitude;
 				let sellerLong = sellerDoc.data().HomeLocation.longtitude;
-				let distanceInKm = geofire.distanceBetween([buyerLat, buyerLong], [sellerLat, sellerLong]);
+				let distanceInKm = Math.sqrt(((buyerLat-sellerLat)*110.547)**2 + (111.320*Math.cos(buyerLong-sellerLong))**2);
 				
+				let timestamp = doc.data().ClosingTime;
+				let date = timestamp.toDate();
+				let date1 = [date.getDate().toString().padStart(2,'0'),(date.getMonth() + 1).toString().padStart(2,'0'),date.getFullYear(),].join('/')
+				let date2 = date.getHours().toString().padStart(2,'0') + ":" + date.getMinutes().toString().padStart(2,'0')
+				let dateString = date1 + " " + date2;
+
 				search_res.push([{
 					"productId": doc.id,
 					"name": doc.data().Name,
@@ -27,7 +32,7 @@ class BuyerProductsLoader {
 					"totalBought": doc.data().TotalBought,
 					"priceThresholds": doc.data().PriceThresholds,
 					"unitThresholds": doc.data().UnitThresholds,
-					"durationLeft": doc.data().ClosingTime,
+					"closingTime": dateString,
 					"desc": doc.data().Description,
 					"pics": doc.data().Pictures,
 					"distanceFromUser": distanceInKm
