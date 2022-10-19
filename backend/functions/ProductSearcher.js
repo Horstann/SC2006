@@ -1,4 +1,4 @@
-const { getFirestore } = require('firebase-admin/firestore');
+const { getFirestore, Timestamp } = require('firebase-admin/firestore');
 
 // As query is too complex, it's unable to be pagenated.
 // So function returns the full array of relevant products
@@ -25,7 +25,7 @@ class ProductSearcher {
 
 		let search_res = [];
 		snapshot.forEach(async doc => {
-			if (doc.data().Name.trim().toLowerCase().includes(searchTerm) && doc.data().ClosingTime <= admin.firestore.Timestamp.now()) {
+			if (doc.data().Name.trim().toLowerCase().includes(searchTerm) && doc.data().ClosingTime <= Timestamp.now()) {
 				
 				const sellerId = doc.data().Seller.id;
 				const sellerRef = db.collection("User").doc(sellerId);

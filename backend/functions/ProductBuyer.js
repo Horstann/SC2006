@@ -1,5 +1,4 @@
-const { getFirestore } = require('firebase-admin/firestore');
-const { admin } = require('firebase-admin');
+const { getFirestore, Timestamp } = require('firebase-admin/firestore');
 
 class ProductBuyer {
 	async ExecuteCommand(cmdData, acc, res) {
@@ -8,7 +7,7 @@ class ProductBuyer {
 		const doc = await productRef.get();
 
 		if (!doc.exists) res.json({"status": 7});
-		if (doc.data().closingTime > admin.firestore.Timestamp.now()) res.json({"status": 11});
+		if (doc.data().closingTime > Timestamp.now()) res.json({"status": 11});
 		if (cmdData.quantity > (doc.data().TotalUnits - doc.data().TotalBought) || cmdData.quantity < 1) res.json({"status": 12});
 
 		let newTotalBought = doc.data().TotalBought + cmdData.quantity;

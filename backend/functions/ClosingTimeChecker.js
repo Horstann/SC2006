@@ -1,6 +1,6 @@
-const { getFirestore } = require('firebase-admin/firestore');
+const { getFirestore, Timestamp } = require('firebase-admin/firestore');
 
-class ProductViewer {
+class ClosingTimeChecker {
 	async ExecuteCommand(cmdData, acc, res) {
 		const db = getFirestore();
 		const productRef = db.collection("Product").doc(cmdData.productId);
@@ -8,7 +8,7 @@ class ProductViewer {
 		if (!doc.exists) res.json({"status": 7});
 
         let isClosed = false;
-        if (doc.data().ClosingTime < admin.firestore.Timestamp.now()) isClosed = true;
+		if (doc.data().ClosingTime < Timestamp.now()) isClosed = true;
 
 		res.json({
 			"status": 0,
@@ -17,4 +17,4 @@ class ProductViewer {
 	}
 }
 
-module.exports = ProductViewer;
+module.exports = ClosingTimeChecker;

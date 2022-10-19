@@ -17,6 +17,14 @@ class AccountEditor {
 			return;
 		}
 
+		if (cmdData.deleteAccount != null){
+			if (cmdData.deleteAccount == true){
+				let accs = await db.collection("User").where("UID", "==", acc.data().uid).get();
+				await db.collection('Users').doc(accs.docs[0].id).delete();
+				res.json({"status": 0});
+			}
+		}
+
 		const result = await acc.set({
 			HomeAddress: cmdData.homeAddr,
 			HomeLocation: new firestore.GeoPoint(

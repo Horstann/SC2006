@@ -14,6 +14,7 @@ const BuyerProductsLoader = require("./BuyerProductsLoader");
 const SellerProductsLoader = require("./SellerProductsLoader");
 const ProductBuyer = require("./ProductBuyer");
 const ProductDropper = require("./ProductDropper");
+const ClosingTimeChecker = require("./ClosingTimeChecker");
 
 class CommandHub {
 	async DecodeCommand(cmdData, acc, res) {
@@ -34,6 +35,7 @@ class CommandHub {
 			case "loadSellerProducts": cmd = new SellerProductsLoader(); break;
 			case "buyProduct":		cmd = new ProductBuyer(); break;
 			case "dropProduct":		cmd = new ProductDropper(); break;
+			case "checkClosingTime": cmd = new ClosingTimeChecker(); break;
 			default:		cmd = new InvalidCommand(); break;
 		}
 

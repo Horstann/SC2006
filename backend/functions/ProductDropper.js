@@ -1,4 +1,4 @@
-const { getFirestore } = require('firebase-admin/firestore');
+const { getFirestore, Timestamp } = require('firebase-admin/firestore');
 const { admin } = require('firebase-admin');
 
 class ProductDropper {
@@ -8,8 +8,18 @@ class ProductDropper {
 		const doc = await productRef.get();
 
 		if (!doc.exists) res.json({"status": 7});
-		if (doc.data().closingTime > admin.firestore.Timestamp.now()) res.json({"status": 11});
+		if (doc.data().closingTime > Timestamp.now()) res.json({"status": 11});
         if (!(doc.id in acc.BoughtProducts)) res.json({"status": 14});
+
+        let newBoughtProducts = doc.data().BoughtProducts;
+        if (doc.data().dropAll != null){
+            if (doc.data().dropAll == true) {
+                delete newBoughtProducts[doc.id];
+                await acc.set({
+                    BoughtProducts: newBoughtProducts
+                });
+            }
+        }
         if (cmdData.quantity > (acc.BoughtProducts[doc.id]) || cmdData.quantity < 1) res.json({"status": 13});
 
 		let newTotalBought = doc.data().TotalBought - cmdData.quantity;
@@ -19,7 +29,6 @@ class ProductDropper {
 
         let newQuantity = acc.BoughtProducts[doc.id] - cmdData.quantity;
 
-        let newBoughtProducts = doc.data().BoughtProducts;
         if (newQuantity == 0){
             delete newBoughtProducts[doc.id];
             await acc.set({
