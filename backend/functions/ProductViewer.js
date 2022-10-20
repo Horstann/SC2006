@@ -3,7 +3,7 @@ const { getFirestore } = require('firebase-admin/firestore');
 class ProductViewer {
 	async ExecuteCommand(cmdData, acc, res) {
 		let buyerLat = acc.data().HomeLocation.latitude;
-		let buyerLong = acc.data().HomeLocation.longtitude;
+		let buyerLong = acc.data().HomeLocation.longitude;
 
 		// connect to firestore
 		const db = getFirestore();
@@ -15,7 +15,7 @@ class ProductViewer {
 		const sellerRef = db.collection("User").doc(sellerId);
 		const sellerDoc = await sellerRef.get();
 		let sellerLat = sellerDoc.data().HomeLocation.latitude;
-		let sellerLong = sellerDoc.data().HomeLocation.longtitude;
+		let sellerLong = sellerDoc.data().HomeLocation.longitude;
 		let distanceInKm = Math.sqrt(((buyerLat-sellerLat)*110.547)**2 + (111.320*Math.cos(buyerLong-sellerLong))**2);
 
 		let timestamp = doc.data().ClosingTime;
