@@ -1,4 +1,5 @@
 const { getFirestore, Timestamp } = require('firebase-admin/firestore');
+const functions = require("firebase-functions");
 
 class ProductLoader {
 	async ExecuteCommand(cmdData, acc, res) {
@@ -10,6 +11,7 @@ class ProductLoader {
 		const db = getFirestore();
 		const productRefs = db.collection("Product");
 		const snapshot = await productRefs.get();
+		functions.logger.log("IT'S HERE BOIS " + snapshot.size);
 		
 		if (snapshot.empty) res.json({"status": 7});
 
@@ -19,7 +21,9 @@ class ProductLoader {
 			const sellerId = doc.data().Seller.id;
 			const sellerRef = db.collection("User").doc(sellerId);
 			const sellerDoc = await sellerRef.get();
-			if (sellerDoc) products.push(sellerDoc.HomeLocation);
+			functions.logger.log("SELLERDOC " + doc.id + ": " + sellerId + ": " + JSON.stringify(sellerDoc.data()));
+
+			products.push(sellerDoc.data().HomeLocation);
 
 			/*
 			let sellerLat = sellerDoc.data().HomeLocation.latitude;

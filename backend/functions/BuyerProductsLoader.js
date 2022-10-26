@@ -9,9 +9,11 @@ class BuyerProductsLoader {
 		const productRefs = db.collection('Product');
 		const snapshot = await productRefs.get();
 
+		if (acc.data().BoughtProducts) res.json({"status": 7});
+
 		let products = [];
 		snapshot.forEach(async doc => {
-			if (doc.id in acc.BoughtProducts) {
+			if (doc.id in acc.data().BoughtProducts) {
 				const sellerId = doc.data().Seller.id;
 				const sellerRef = db.collection("User").doc(sellerId);
 				const sellerDoc = await sellerRef.get();

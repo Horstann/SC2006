@@ -2,6 +2,8 @@ const { getFirestore } = require('firebase-admin/firestore');
 
 class ProductViewer {
 	async ExecuteCommand(cmdData, acc, res) {
+		if (acc == null) res.json({"status": 6});
+
 		let buyerLat = acc.data().HomeLocation.latitude;
 		let buyerLong = acc.data().HomeLocation.longitude;
 
