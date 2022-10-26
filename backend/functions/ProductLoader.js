@@ -16,7 +16,7 @@ class ProductLoader {
 		if (snapshot.empty) res.json({"status": 7});
 
 		let products = [];
-		snapshot.forEach(async doc => {
+		await snapshot.forEach(async doc => {
 
 			const sellerId = doc.data().Seller.id;
 			const sellerRef = db.collection("User").doc(sellerId);
