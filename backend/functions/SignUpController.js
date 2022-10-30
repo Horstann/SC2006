@@ -5,7 +5,8 @@ class SignUpController {
 		if (cmdData.newAuthKey == undefined ||
 				cmdData.homeLat == undefined ||
 				cmdData.homeLong == undefined ||
-				cmdData.homeAddr == undefined) {
+				cmdData.homeAddr == undefined ||
+				cmdData.qrcode == undefined) {
 			res.json({"status": 9});
 			return;
 		}
