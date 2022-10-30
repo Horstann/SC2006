@@ -11,21 +11,20 @@ class ProductLoader {
 		const db = getFirestore();
 		const productRefs = db.collection("Product");
 		const snapshot = await productRefs.get();
-		functions.logger.log("IT'S HERE BOIS " + snapshot.size);
+		//functions.logger.log("IT'S HERE BOIS " + snapshot.size);
 		
 		if (snapshot.empty) res.json({"status": 7});
 
 		let products = [];
-		await snapshot.forEach(async doc => {
-
+		for (const doc of snapshot.docs) {
 			const sellerId = doc.data().Seller.id;
 			const sellerRef = db.collection("User").doc(sellerId);
 			const sellerDoc = await sellerRef.get();
-			functions.logger.log("SELLERDOC " + doc.id + ": " + sellerId + ": " + JSON.stringify(sellerDoc.data()));
+			//functions.logger.log("SELLERDOC " + doc.id + ": " + sellerId + ": " + JSON.stringify(sellerDoc.data()));
 
-			products.push(sellerDoc.data().HomeLocation);
+			//products.push(sellerDoc.data().HomeLocation);
+			//functions.logger.log("ADDING: " + sellerDoc.data().HomeLocation);
 
-			/*
 			let sellerLat = sellerDoc.data().HomeLocation.latitude;
 			let sellerLong = sellerDoc.data().HomeLocation.longitude;
 			let distanceInKm = Math.sqrt(((buyerLat-sellerLat)*110.547)**2 + (111.320*Math.cos(buyerLong-sellerLong))**2);
@@ -46,10 +45,11 @@ class ProductLoader {
                 "closingTime": dateString,
                 "desc": doc.data().Description,
                 "pics": doc.data().Pictures,
-				"distanceFromUser": distanceInKm
-            });
-			*/
-		});
+								"distanceFromUser": distanceInKm
+								});
+		};
+
+		//functions.logger.log("Done");
 
 		res.json({
 			"status": 0,
