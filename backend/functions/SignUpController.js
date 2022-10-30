@@ -30,19 +30,13 @@ class SignUpController {
 		
 		// Create account.
 		let db = firestore.getFirestore();
-		const result = await db.collection("User").add({
+		await db.collection("User").add({
 			HomeAddress: cmdData.homeAddr,
 			HomeLocation: new firestore.GeoPoint(
 				cmdData.homeLat, cmdData.homeLong),
 			UID: uid,
+			QRCode: cmdData.qrcode
 		});
-
-		if (cmdData.qrcode != null){
-			const docRef = db.collection('User').doc(result.id);
-			await docRef.set({
-				QRCode: cmdData.qrcode
-			}, { merge: true });
-		}
 		
 		res.json({"status": 0});
 	}

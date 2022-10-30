@@ -4,7 +4,8 @@ class AccountEditor {
 	async ExecuteCommand(cmdData, acc, res) {
 		if (cmdData.homeLat == undefined ||
 				cmdData.homeLong == undefined ||
-				cmdData.homeAddr == undefined) {
+				cmdData.homeAddr == undefined ||
+				cmdData.qrcode == undefined) {
 			res.json({"status": 9});
 			return;
 		}
@@ -17,26 +18,14 @@ class AccountEditor {
 			return;
 		}
 
-		if (cmdData.deleteAccount != null){
-			if (cmdData.deleteAccount == true){
-				let accs = await db.collection("User").where("UID", "==", acc.data().uid).get();
-				await db.collection('Users').doc(accs.docs[0].id).delete();
-				res.json({"status": 0});
-			}
-		}
-
-		const result = await acc.set({
+		let db = firestore.getFirestore();
+		await db.collection("User").doc(acc.id).set({
 			HomeAddress: cmdData.homeAddr,
 			HomeLocation: new firestore.GeoPoint(
 				cmdData.homeLat, cmdData.homeLong),
-			UID: acc.data().uid
+			UID: acc.data().UID,
+			QRCode: cmdData.qrcode
 		});
-		
-		if (cmdData.qrcode != null){
-			await acc.set({
-				QRCode: cmdData.qrcode
-			}, { merge: true });
-		}
 
 		res.json({"status": 0});
 	}
