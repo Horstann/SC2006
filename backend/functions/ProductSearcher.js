@@ -50,8 +50,6 @@ class ProductSearcher {
 				let date2 = date.getHours().toString().padStart(2,'0') + ":" + date.getMinutes().toString().padStart(2,'0')
 				let dateString = date1 + " " + date2;
 
-				functions.logger.log("Distance in KM: " + distanceInKm);
-
 				search_res.push([{
 					"productId": doc.id,
 					"name": doc.data().Name,
