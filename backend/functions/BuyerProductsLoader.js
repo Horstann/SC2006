@@ -1,4 +1,4 @@
-const { getFirestore } = require('firebase-admin/firestore');
+const { getFirestore, Timestamp } = require('firebase-admin/firestore');
 
 class BuyerProductsLoader {
 	async ExecuteCommand(cmdData, acc, res) {
@@ -8,8 +8,6 @@ class BuyerProductsLoader {
 		const db = getFirestore();
 		const productRefs = db.collection('Product');
 		const snapshot = await productRefs.get();
-
-		if (acc.data().BoughtProducts) res.json({"status": 7});
 
 		let products = [];
 		for (const doc of snapshot.docs) {
