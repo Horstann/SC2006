@@ -1,14 +1,32 @@
-const { getFirestore } = require('firebase-admin/firestore');
+const { getFirestore, Timestamp } = require('firebase-admin/firestore');
 
 class ProductAdder {
 	async ExecuteCommand(cmdData, acc, res) {
+		if (
+			cmdData.name == undefined ||
+			cmdData.totalUnits == undefined ||
+			cmdData.priceThresholds == undefined ||
+			cmdData.unitThresholds == undefined ||
+			cmdData.closingTime == undefined ||
+			cmdData.desc == undefined ||
+			cmdData.pics == undefined
+			) {
+			res.json({"status": 9});
+			return;
+		}
+
+		if (acc == null) {
+			res.json({"status": 6});
+			return;
+		}
+
 		const db = getFirestore();
 		
 		const [dateValues, timeValues] = (cmdData.closingTime+":00").split(' ');
 		const [month, day, year] = dateValues.split('/');
 		const [hours, minutes, seconds] = timeValues.split(':');
 		const date = new Date(+year, month - 1, +day, +hours, +minutes, +seconds);
-		const timestamp = date.fromDate();
+		const timestamp = Timestamp.fromDate(date);
 
 		const data = {
 			Name: cmdData.name,
@@ -25,13 +43,12 @@ class ProductAdder {
 			*/
 			Description: cmdData.desc,
 			Pictures: cmdData.pics,
-			Seller: acc
+			Seller: acc.ref
 		};
 
 		const result = await db.collection('Product').add(data);
 		res.json({
 			"status": 0,
-			"pictures": result.data().Pictures,
 			"productId": result.id
 		});
 	}
