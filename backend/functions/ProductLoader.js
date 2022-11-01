@@ -46,10 +46,10 @@ class ProductLoader {
                 "desc": doc.data().Description,
                 "pics": doc.data().Pictures,
 				"sellerAddress": sellerDoc.data().HomeAddress,
-				"sellerLat": sellerDoc.data().HomeLocation.latitude,
-				"sellerLong": sellerDoc.data().HomeLocation.longitude,
+				"sellerLat": sellerLat,
+				"sellerLong": sellerLong,
 				"distanceFromUser": distanceInKm
-								});
+			});
 		};
 
 		//functions.logger.log("Done");
