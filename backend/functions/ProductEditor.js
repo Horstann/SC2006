@@ -1,4 +1,4 @@
-const { getFirestore } = require('firebase-admin/firestore');
+const { getFirestore, Timestamp } = require('firebase-admin/firestore');
 const ImageUploader = require("./ImageUploader.js");
 
 class ProductEditor {
@@ -31,7 +31,7 @@ class ProductEditor {
             const [month, day, year] = dateValues.split('/');
             const [hours, minutes, seconds] = timeValues.split(':');
             const date = new Date(+year, month - 1, +day, +hours, +minutes, +seconds);
-            const timestamp = date.fromDate();
+            const timestamp = Timestamp.fromDate(date);
 
             await productRef.update({ClosingTime: timestamp});
         }
