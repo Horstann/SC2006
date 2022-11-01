@@ -14,6 +14,8 @@ class BuyerProductsLoader {
 		let products = [];
 		snapshot.forEach(async doc => {
 			if (doc.id in acc.data().BoughtProducts) {
+				let unitsBought = acc.data().BoughtProducts[doc.id];
+
 				const sellerId = doc.data().Seller.id;
 				const sellerRef = db.collection("User").doc(sellerId);
 				const sellerDoc = await sellerRef.get();
@@ -33,6 +35,7 @@ class BuyerProductsLoader {
 				search_res.push([{
 					"productId": doc.id,
 					"name": doc.data().Name,
+					"unitsBought": unitsBought,
 					"totalUnits": doc.data().TotalUnits,
 					"totalBought": doc.data().TotalBought,
 					"priceThresholds": doc.data().PriceThresholds,

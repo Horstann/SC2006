@@ -28,7 +28,7 @@ class ProductLoader {
 			let sellerLat = sellerDoc.data().HomeLocation.latitude;
 			let sellerLong = sellerDoc.data().HomeLocation.longitude;
 			let distanceInKm = Math.sqrt(((buyerLat-sellerLat)*110.547)**2 + (111.320*Math.cos(buyerLong-sellerLong))**2);
-			
+
 			let timestamp = doc.data().ClosingTime;
 			let date = timestamp.toDate();
 			let date1 = [date.getDate().toString().padStart(2,'0'),(date.getMonth() + 1).toString().padStart(2,'0'),date.getFullYear(),].join('/')
@@ -45,7 +45,10 @@ class ProductLoader {
                 "closingTime": dateString,
                 "desc": doc.data().Description,
                 "pics": doc.data().Pictures,
-								"distanceFromUser": distanceInKm
+				"sellerAddress": sellerDoc.data().HomeAddress,
+				"sellerLat": sellerDoc.data().HomeLocation.latitude,
+				"sellerLong": sellerDoc.data().HomeLocation.longitude,
+				"distanceFromUser": distanceInKm
 								});
 		};
 
