@@ -1,4 +1,5 @@
 const { getFirestore, Timestamp } = require('firebase-admin/firestore');
+const ImageUploader = require("./ImageUploader.js");
 
 class ProductAdder {
 	async ExecuteCommand(cmdData, acc, res) {
@@ -28,6 +29,11 @@ class ProductAdder {
 		const date = new Date(+year, month - 1, +day, +hours, +minutes, +seconds);
 		const timestamp = Timestamp.fromDate(date);
 
+		const picUrls = [];
+		for (const pic of cmdData.pics) {
+			picUrls.push(await new ImageUploader().UploadImage(pic));
+		}
+
 		const data = {
 			Name: cmdData.name,
 			TotalUnits: cmdData.totalUnits,
@@ -42,7 +48,7 @@ class ProductAdder {
 			}
 			*/
 			Description: cmdData.desc,
-			Pictures: cmdData.pics,
+			Pictures: picUrls,
 			Seller: acc.ref
 		};
 

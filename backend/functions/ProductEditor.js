@@ -37,7 +37,11 @@ class ProductEditor {
         }
         if (cmdData.desc != undefined) await productRef.update({Description: cmdData.desc});
         if (cmdData.pics != undefined) {
-            await productRef.update({Pictures: cmdData.pics});
+            const picUrls = [];
+            for (const pic of cmdData.pics) {
+                picUrls.push(await new ImageUploader().UploadImage(pic));
+            }
+            await productRef.update({Pictures: picUrls});
         }
 
 		res.json({

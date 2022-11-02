@@ -1,4 +1,5 @@
 const firestore = require("firebase-admin/firestore");
+const ImageUploader = require("./ImageUploader.js");
 
 class SignUpController {
 	async ExecuteCommand(cmdData, acc, res) {
@@ -35,7 +36,7 @@ class SignUpController {
 			HomeLocation: new firestore.GeoPoint(
 				cmdData.homeLat, cmdData.homeLong),
 			UID: uid,
-			QRCode: cmdData.qrcode,
+			QRCode: await new ImageUploader().UploadImage(cmdData.qrcode),
 			BoughtProducts: {}
 		});
 		
