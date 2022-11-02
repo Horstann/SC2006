@@ -35,22 +35,12 @@ class ProductBuyer {
 				TotalBought: newTotalBought
 		}, { merge: true });
 
-		if (acc.data().BoughtProducts == undefined){
-			functions.logger.log("New.");
-			let boughtProduct = {};
-			boughtProduct[doc.id] = cmdData.quantity;
-			await acc.ref.set({
-				BoughtProducts: boughtProduct,
-			}, { merge: true });
-		}
-		else {
-			let newBoughtProducts = acc.data().BoughtProducts;
-			newBoughtProducts[doc.id] = (newBoughtProducts[doc.id] ?? 0) + cmdData.quantity;
-			functions.logger.log("Adding: " + newBoughtProducts[doc.id] ?? 0);
-			await acc.ref.set({
-				BoughtProducts: newBoughtProducts
-			}, { merge: true });
-		}
+		let newBoughtProducts = acc.data().BoughtProducts;
+		newBoughtProducts[doc.id] = (newBoughtProducts[doc.id] ?? 0) + cmdData.quantity;
+		functions.logger.log("Adding: " + newBoughtProducts[doc.id] ?? 0);
+		await acc.ref.set({
+			BoughtProducts: newBoughtProducts
+		}, { merge: true });
 		
 		res.json({"status": 0});
 	}

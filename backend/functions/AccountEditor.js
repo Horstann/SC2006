@@ -17,6 +17,7 @@ class AccountEditor {
 				cmdData.homeLat ?? acc.data().HomeLocation.latitude,
 				cmdData.homeLong ?? acc.data().HomeLocation.longitude),
 			QRCode: cmdData.qrcode ?? acc.data().QRCode,
+			BoughtProducts: acc.data().BoughtProducts,
 			UID: acc.data().UID
 		});
 

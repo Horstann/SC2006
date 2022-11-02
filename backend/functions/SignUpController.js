@@ -35,7 +35,8 @@ class SignUpController {
 			HomeLocation: new firestore.GeoPoint(
 				cmdData.homeLat, cmdData.homeLong),
 			UID: uid,
-			QRCode: cmdData.qrcode
+			QRCode: cmdData.qrcode,
+			BoughtProducts: {}
 		});
 		
 		res.json({"status": 0});
