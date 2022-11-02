@@ -23,7 +23,7 @@ class BuyerProductsLoader {
 					let distanceInKm = Math.sqrt(((buyerLat-sellerLat)*110.547)**2 + (111.320*Math.cos(buyerLong-sellerLong))**2);
 					
 					let isClosed = false;
-					if (doc.data().ClosingTime < Timestamp.now()) isClosed = true;
+					if (doc.data().ClosingTime.toMillis() < Timestamp.now().toMillis()) isClosed = true;
 
 					let timestamp = doc.data().ClosingTime;
 					let date = timestamp.toDate();

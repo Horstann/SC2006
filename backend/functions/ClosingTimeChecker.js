@@ -8,7 +8,7 @@ class ClosingTimeChecker {
 		if (!doc.exists) res.json({"status": 7});
 
         let isClosed = false;
-		if (doc.data().ClosingTime < Timestamp.now()) isClosed = true;
+		if (doc.data().ClosingTime.toMillis() < Timestamp.now().toMillis()) isClosed = true;
 
 		res.json({
 			"status": 0,
