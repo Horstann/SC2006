@@ -10,11 +10,12 @@ const ProductEditor = require("./ProductEditor.js");
 const InvalidCommand = require("./InvalidCommand.js");
 const ImageUploaderTester = require("./ImageUploaderTester.js");
 const QRCodeLoader = require("./QRCodeLoader.js");
-const BuyerProductsLoader = require("./BuyerProductsLoader");
-const SellerProductsLoader = require("./SellerProductsLoader");
-const ProductBuyer = require("./ProductBuyer");
-const ProductDropper = require("./ProductDropper");
-const ClosingTimeChecker = require("./ClosingTimeChecker");
+const BuyerProductsLoader = require("./BuyerProductsLoader.js");
+const SellerProductsLoader = require("./SellerProductsLoader.js");
+const ProductBuyer = require("./ProductBuyer.js");
+const ProductDropper = require("./ProductDropper.js");
+const ClosingTimeChecker = require("./ClosingTimeChecker.js");
+const AccountViewer = require("./AccountViewer.js");
 
 class CommandHub {
 	async DecodeCommand(cmdData, acc, res) {
@@ -36,6 +37,7 @@ class CommandHub {
 			case "buyProduct":		cmd = new ProductBuyer(); break;
 			case "dropProduct":		cmd = new ProductDropper(); break;
 			case "checkClosingTime": cmd = new ClosingTimeChecker(); break;
+			case "viewAccount": cmd = new AccountViewer(); break;
 			default:		cmd = new InvalidCommand(); break;
 		}
 
