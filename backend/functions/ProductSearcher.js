@@ -1,4 +1,5 @@
 const { getFirestore, Timestamp } = require('firebase-admin/firestore');
+const { getDistance } = require('geolib');
 const functions = require("firebase-functions");
 
 // As query is too complex, it's unable to be pagenated.
@@ -43,7 +44,13 @@ class ProductSearcher {
 				const sellerDoc = await sellerRef.get();
 				let sellerLat = sellerDoc.data().HomeLocation.latitude;
 				let sellerLong = sellerDoc.data().HomeLocation.longitude;
-				let distanceInKm = Math.sqrt(((buyerLat-sellerLat)*110.547)**2 + (111.320*Math.cos(buyerLong-sellerLong))**2);
+
+				let distanceInKm = getDistance(
+					{ latitude: buyerLat, longitude: buyerLong },
+					{ latitude: sellerLat, longitude: sellerLong }
+				)
+				distanceInKm /= 1000;
+
 				let timestamp = doc.data().ClosingTime;
 				let date = timestamp.toDate();
 				let date1 = [date.getDate().toString().padStart(2,'0'),(date.getMonth() + 1).toString().padStart(2,'0'),date.getFullYear(),].join('/')

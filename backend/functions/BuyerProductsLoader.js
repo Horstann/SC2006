@@ -1,4 +1,5 @@
 const { getFirestore, Timestamp } = require('firebase-admin/firestore');
+const { getDistance } = require('geolib');
 
 class BuyerProductsLoader {
 	async ExecuteCommand(cmdData, acc, res) {
@@ -19,8 +20,11 @@ class BuyerProductsLoader {
 				const sellerDoc = await sellerRef.get();
 				let sellerLat = sellerDoc.data().HomeLocation.latitude;
 				let sellerLong = sellerDoc.data().HomeLocation.longitude;
-				let distanceInKm = Math.sqrt(((buyerLat-sellerLat)*110.547)**2 + (111.320*Math.cos(buyerLong-sellerLong))**2);
-				
+				let distanceInKm = getDistance(
+					{ latitude: buyerLat, longitude: buyerLong },
+					{ latitude: sellerLat, longitude: sellerLong }
+				)
+				distanceInKm /= 1000;				
 				let isClosed = false;
 				if (doc.data().ClosingTime.toMillis() < Timestamp.now().toMillis()) isClosed = true;
 

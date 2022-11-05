@@ -1,4 +1,5 @@
 const { getFirestore, Timestamp } = require('firebase-admin/firestore');
+const { getDistance } = require('geolib');
 const functions = require("firebase-functions");
 
 class ProductLoader {
@@ -27,7 +28,18 @@ class ProductLoader {
 
 			let sellerLat = sellerDoc.data().HomeLocation.latitude;
 			let sellerLong = sellerDoc.data().HomeLocation.longitude;
-			let distanceInKm = Math.sqrt(((buyerLat-sellerLat)*110.547)**2 + (111.320*Math.cos(buyerLong-sellerLong))**2);
+
+			let distanceInKm = getDistance(
+				{ latitude: buyerLat, longitude: buyerLong },
+				{ latitude: sellerLat, longitude: sellerLong }
+			)
+			distanceInKm /= 1000;
+			/*
+			const GeoPoint = require('geopoint');
+			let buyerPoint = new GeoPoint(buyerLat, buyerLong);
+			let sellerPoint = new GeoPoint(sellerLat, sellerLong);
+			var distanceInKm = buyerPoint.distanceTo(sellerPoint, true)//output in kilometers
+			*/
 
 			let timestamp = doc.data().ClosingTime;
 			let date = timestamp.toDate();

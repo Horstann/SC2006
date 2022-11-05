@@ -46,6 +46,11 @@ class ProductDropper {
         }
 
         boughtProducts[doc.id] -= cmdData.quantity;
+
+        if (boughtProducts[doc.id] <= 0){
+            boughtProducts.delete(doc.id);
+        }
+        
         acc.ref.update({
             BoughtProducts: boughtProducts
         });
@@ -53,7 +58,7 @@ class ProductDropper {
         productRef.update({
             TotalBought: doc.data().TotalBought - cmdData.quantity
         });
-
+        
 		res.json({"status": 0});
 	}
 }
