@@ -48,7 +48,7 @@ class ProductDropper {
         boughtProducts[doc.id] -= cmdData.quantity;
 
         if (boughtProducts[doc.id] <= 0){
-            boughtProducts.delete(doc.id);
+            delete boughtProducts[doc.id];
         }
         
         acc.ref.update({
