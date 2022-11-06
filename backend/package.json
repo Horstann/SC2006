@@ -5,6 +5,8 @@
     "firebase-functions": "^3.24.1",
     "geofire": "^6.0.0",
     "geofire-common": "^6.0.0",
+    "geolib": "^3.3.3",
+    "global": "^4.4.0",
     "google-auth-library": "^8.5.2"
   }
 }

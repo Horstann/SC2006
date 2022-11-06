@@ -24,7 +24,7 @@ class ProductAdder {
 		const db = getFirestore();
 		
 		const [dateValues, timeValues] = (cmdData.closingTime+":00").split(' ');
-		const [month, day, year] = dateValues.split('/');
+		const [day, month, year] = dateValues.split('/');
 		const [hours, minutes, seconds] = timeValues.split(':');
 		const date = new Date(+year, month - 1, +day, +hours, +minutes, +seconds);
 		const timestamp = Timestamp.fromDate(date);
