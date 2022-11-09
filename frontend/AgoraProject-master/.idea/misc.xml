@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2985" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/drawable/bordertv.xml" value="0.356" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/drawable/exampleImage_background.xml" value="0.1935" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/drawable/gradient_bg.xml" value="0.3625" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2985" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/drawable/rounded_b.xml" value="0.3635" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/drawable/rounded_et.xml" value="0.3625" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/activity_account.xml" value="0.33" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/activity_address.xml" value="0.3625" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/activity_chat.xml" value="0.33" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/activity_current_order.xml" value="0.16296296296296298" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/activity_fav_item_activitiy.xml" value="0.3625" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/activity_forgot_password.xml" value="0.22" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/activity_login.xml" value="0.21227621483375958" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/activity_main2.xml" value="0.3484375" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/activity_mainpage.xml" value="0.33" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/activity_manage_product.xml" value="0.3625" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/activity_payment.xml" value="0.33" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/activity_product_page.xml" value="0.33" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/activity_seller_qr_code.xml" value="0.3625" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/activity_signup.xml" value="0.33" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/activity_signup_new.xml" value="0.33" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/activity_upload_product.xml" value="0.25" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/activity_userspage.xml" value="0.11860940695296524" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/content_forgot_password.xml" value="0.3625" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/faverecyclerview_row.xml" value="0.33" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/friends_row.xml" value="0.67" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/grid_items.xml" value="0.3614583333333333" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/item_rv_row.xml" value="0.5" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/layout_add_users.xml" value="0.13240740740740742" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/loading_dialog.xml" value="0.3614583333333333" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/manage_product_row.xml" value="0.33" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/pending_shoppingcart_row.xml" value="0.3614583333333333" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/product_slide_item.xml" value="0.3614583333333333" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/layout/search_autocomplete_row.xml" value="0.1762917933130699" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/mipmap-anydpi-v26/exampleImage.xml" value="0.1935" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3635" />
+        <entry key="..\:/Users/its_j/AndroidStudioProjects/MyFirstNewProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.317" />
+        <entry key="..\:/Users/jared/Desktop/Code/AgoraProject/app/src/main/res/layout/activity_chat.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/jared/Desktop/Code/AgoraProject/app/src/main/res/layout/activity_product_page.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/jared/Desktop/Code/AgoraProject/app/src/main/res/layout/activity_test.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/jared/Desktop/Code/AgoraProject/app/src/main/res/layout/chat_message.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/jared/Desktop/Code/AgoraProject/app/src/main/res/layout/faverecyclerview_row.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/junwe/Desktop/Y2S1/AgoraProject/app/src/main/res/layout/activity_current_order.xml" value="0.25" />
+        <entry key="..\:/Users/junwe/Desktop/Y2S1/AgoraProject/app/src/main/res/layout/activity_mainpage.xml" value="0.1" />
+        <entry key="..\:/Users/junwe/Desktop/Y2S1/AgoraProject/app/src/main/res/layout/activity_manage_product.xml" value="0.1" />
+        <entry key="..\:/Users/junwe/Desktop/Y2S1/AgoraProject/app/src/main/res/layout/pending_shoppingcart_row.xml" value="0.13297872340425532" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.3625" />
+      </ProjectState>
+    </option>
+  </component>
+</project>

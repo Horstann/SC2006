@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">AgoraProject</string>
+    <string name="title_activity_forgot_password">forgotPasswordActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>\
+
+    <string name="sign_up_here">New User? <u>Sign up now!</u></string>
+    <string name="forgot_password"><u>Forgot Password?</u></string>
+    <string-array name="test_products_txt">
+        <item>ITEM 1</item>
+        <item>ITEM 2</item>
+        <item>ITEM 3</item>
+        <item>ITEM 4</item>
+        <item>ITEM 5</item>
+        <item>ITEM 6</item>
+        <item>ITEM 7</item>
+        <item>ITEM 8</item>
+        <item>ITEM 9</item>
+    </string-array>
+    <string name="title_activity_showseller_map">showsellerMapActivity</string>
+    <string name="title_activity_show_product_queuemap">showProductQueuemap</string>
+</resources>

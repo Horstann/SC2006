@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="92"
+    android:background="@drawable/test_bg"
+    tools:context=".SignupActivity">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="0dp"
+            android:background="@color/white"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/maimailogo" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="80"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10">
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="80"
+            android:orientation="vertical"
+            android:weightSum="88">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:text="New User Sign Up!"
+                android:textColor="@color/white"
+                android:textSize="30dp" />
+
+            <EditText
+                android:padding="10dp"
+                android:id="@+id/newName_EditText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="8"
+                android:background="@drawable/rounded_et"
+                android:hint="Enter Full Name"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/newEmail_EditText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="8"
+                android:padding="10dp"
+                android:background="@drawable/rounded_et"
+                android:hint="Enter Email Address"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/newPassword_EditText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="8"
+                android:padding="10dp"
+                android:background="@drawable/rounded_et"
+                android:hint="Enter Password"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/confirmPassword_EditText2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="8"
+                android:background="@drawable/rounded_et"
+                android:hint="Confirm Password"
+                android:padding="10dp"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/Address_EditText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="8"
+                android:padding="10dp"
+                android:background="@drawable/rounded_et"
+                android:hint="Enter Address"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/PostalCode_EditText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="8"
+                android:background="@drawable/rounded_et"
+                android:padding="10dp"
+                android:hint="Enter Postal Code"
+                android:inputType="number" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10"
+                android:background="@drawable/rounded_et"
+                android:orientation='horizontal'
+                android:weightSum="2">
+
+                <RadioButton
+                    android:id="@+id/buyer_radioButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Buyer" />
+
+                <RadioButton
+                    android:id="@+id/seller_radioButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Seller" />
+            </RadioGroup>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2" />
+
+            <Button
+                android:id="@+id/submit_Button"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10"
+                android:background="@drawable/rounded_et"
+                android:text="Continue" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="12"></FrameLayout>
+            ">
+        </LinearLayout>
+
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10">
+
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bgbgb2"
+    android:orientation="vertical"
+    tools:context=".Upload_Product_Activity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="200">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:srcCompat="@drawable/agora" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/new_product_EditText"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:text="Add New Product to Sell!"
+                android:textSize="24dp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:weightSum="15">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
+                    app:cardCornerRadius="20dp">
+
+                    <com.smarteist.autoimageslider.SliderView
+                        android:id="@+id/uploadImage_slider"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:sliderAnimationDuration="600"
+                        app:sliderAutoCycleDirection="back_and_forth"
+                        app:sliderAutoCycleEnabled="true"
+                        app:sliderIndicatorAnimationDuration="600"
+                        app:sliderIndicatorGravity="center_horizontal|bottom"
+                        app:sliderIndicatorMargin="5dp"
+                        app:sliderIndicatorOrientation="horizontal"
+                        app:sliderIndicatorPadding="3dp"
+                        app:sliderIndicatorRadius="2dp"
+                        app:sliderIndicatorSelectedColor="#5A5A5A"
+                        app:sliderIndicatorUnselectedColor="#FFF"
+                        app:sliderScrollTimeInSec="2"
+                        app:sliderStartAutoCycle="true" />
+                </androidx.cardview.widget.CardView>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:orientation="vertical"
+                    android:weightSum="10">
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="2" />
+
+                    <Button
+                        android:id="@+id/image_uploadButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="3"
+                        android:text="Upload" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="4" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="700dp"
+                android:orientation="horizontal"
+                android:weightSum="12">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="10"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/upload_prod_name_ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:hint="Enter Item Name"
+                        android:inputType="textPersonName" />
+
+                    <EditText
+                        android:id="@+id/upload_prod_price_Threshold_ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:hint="Enter Price Threshold"
+                        android:inputType="text" />
+
+                    <EditText
+                        android:id="@+id/upload_prod_Threshold_ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:hint="Enter Unit Threshold"
+                        android:inputType="text" />
+
+                    <EditText
+                        android:id="@+id/upload_prod_totalunits_ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:hint="Enter Total Units"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/upload_prod_endtime_ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:hint="Enter End Time"
+                        android:inputType="textPersonName" />
+
+                    <EditText
+                        android:id="@+id/upload_DES_ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:ems="10"
+                        android:gravity="top"
+                        android:hint="Enter Description"
+                        android:inputType="textMultiLine" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp" />
+
+                    <Button
+                        android:id="@+id/list_item_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="List Item" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+</LinearLayout>
